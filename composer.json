@@ -1,0 +1,16 @@
+{
+    "name": "MbSupport",
+    "description": "Support classes for Mb libraries.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Rob Marton"
+        }
+    ],
+    "version": "dev-master",
+    "autoload": {
+        "psr-4": {
+            "MbSupport\\": "src/MbSupport/"
+        }
+    }
+}
