@@ -22,16 +22,10 @@ class ApiResponse implements ApiResponseInterface
         return $this->toJson();
     }
 
-    public function __construct()
-    {
-    }
-
     public function setSuccess($success, $msg = null)
     {
-        $this->response['success'] = $success;
-        if ($msg) {
-            $this->response['msg'] = $msg;
-        }
+        $this->response['success']     = $success;
+        $msg && $this->response['msg'] = $msg;
 
         return $this;
     }
@@ -55,9 +49,7 @@ class ApiResponse implements ApiResponseInterface
         $this->response[$this->payloadKey] = $value;
         $this->response['total'] = $total;
 
-        if (is_array($value)) {
-            $this->response['total'] = count($value);
-        }
+        is_array($value) && $this->response['total'] = count($value);
 
         return $this;
     }
