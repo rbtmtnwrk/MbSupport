@@ -1,5 +1,5 @@
 {
-    "name": "MbSupport",
+    "name": "mbsupport",
     "description": "Support classes for Mb libraries.",
     "type": "library",
     "authors": [
