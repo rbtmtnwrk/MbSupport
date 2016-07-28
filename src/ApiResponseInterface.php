@@ -11,11 +11,15 @@ interface ApiResponseInterface
      */
     public function __toString();
 
+    public function response($closure);
+
     public function setSuccess($success, $msg = null);
 
     public function setMsg($msg);
 
     public function setTotal($total);
+
+    public function setPayloadKey($payloadKey);
 
     public function setResults($value, $total = 0);
 

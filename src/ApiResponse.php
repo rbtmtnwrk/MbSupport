@@ -22,6 +22,15 @@ class ApiResponse implements ApiResponseInterface
         return $this->toJson();
     }
 
+    public function response($closure)
+    {
+        try {
+            return $closure();
+        } catch (\Exception $e) {
+            return $this->setException($e);
+        }
+    }
+
     public function setSuccess($success, $msg = null)
     {
         $this->response['success']     = $success;
@@ -87,15 +96,6 @@ class ApiResponse implements ApiResponseInterface
     public function toJson($options = 0)
     {
         return json_encode($this->response, $options);
-    }
-
-    public function response($closure)
-    {
-        try {
-            return $closure();
-        } catch (\Exception $e) {
-            return $this->setException($e);
-        }
     }
 }
 
