@@ -132,6 +132,20 @@ class ApiResponseTest extends TestCase
         $this->assertEquals($expected, $apiResponse->toArray());
     }
 
+    public function test_it_loads()
+    {
+        $expected = [
+            'success' => 1,
+            'msg'     => '',
+            'total'   => 1,
+            'data'    => ['test' => 1]
+        ];
+        $apiResponse = new \MbSupport\ApiResponse;
+        $apiResponse->load(['test' => 1], 'data');
+
+        $this->assertEquals($expected, $apiResponse->toArray());
+    }
+
     public function test_response_closure()
     {
         $this->apiResponse = new \MbSupport\ApiResponse;

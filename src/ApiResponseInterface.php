@@ -13,6 +13,8 @@ interface ApiResponseInterface
 
     public function response($closure);
 
+    public function load($data, $payloadKey = null);
+
     public function setSuccess($success, $msg = null);
 
     public function setMsg($msg);

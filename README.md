@@ -11,6 +11,8 @@ Available methods:
 ```
 response($closure);
 
+load($data, $payloadKey = null);
+
 setSuccess($success, $msg = null);
 
 setMsg($msg);
@@ -26,6 +28,36 @@ setException($e, $success = 0);
 toArray();
 
 toJson($options = 0);
+```
+
+Example usage:
+
+```
+$apiResponse = new \MbSupport\ApiResponse;
+
+// Load results
+$apiResponse->load(['foo' => 1, 'bar' => 2]);
+
+// toJson() returns: "{"success":1,"msg":"","total":2,"results":{"foo":1}}"
+$apiResponse->toJson();
+
+...
+
+// Override the default payload key named 'results'
+$apiResponse->load(['foo' => 1], 'data');
+
+// toJson() returns: "{"success":1,"msg":"","total":1,"data":{"foo":1}}"
+$apiResponse->toJson();
+
+```
+
+Setting and exception sets the success to <code>0</code> for you:
+
+```
+$apiResponse->setException($e);
+
+// toJson() returns: "{"success":0,"msg":"Test Exception in Foo.php: eval()'d code on line 1","total":0}"
+$apiResponse->toJson();
 ```
 
 ###ResettableTrait

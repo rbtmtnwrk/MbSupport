@@ -31,6 +31,13 @@ class ApiResponse implements ApiResponseInterface
         }
     }
 
+    public function load($data, $payloadKey = null)
+    {
+        $payloadKey && $this->setPayloadKey($payloadKey);
+
+        return $this->setResults($data);
+    }
+
     public function setSuccess($success, $msg = null)
     {
         $this->response['success']     = $success;
