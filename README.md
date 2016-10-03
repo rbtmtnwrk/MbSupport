@@ -25,6 +25,8 @@ setResults($value, $total = 0);
 
 setException($e, $success = 0);
 
+setExceptionCallback($exceptionCallback);
+
 toArray();
 
 toJson($options = 0);
