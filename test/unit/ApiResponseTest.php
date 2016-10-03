@@ -69,6 +69,29 @@ class ApiResponseTest extends TestCase
         $this->assertEquals($apiResponse->setException($exception)->toArray(), $expected);
     }
 
+    public function test_it_calls_the_exception_callback()
+    {
+        $exception   = new \Exception('Test');
+        $apiResponse = new \MbSupport\ApiResponse;
+        $result      = (object) [
+            'called'    => false,
+            'msg'       => null,
+            'exception' => null,
+        ];
+        $callback    = function($msg, $e) use (&$result) {
+            $result->called    = true;
+            $result->msg       = $msg;
+            $result->exception = $e;
+        };
+
+        $apiResponse->setExceptionCallback($callback);
+        $apiResponse->setException($exception);
+
+        $this->assertEquals(true, $result->called);
+        $this->assertEquals($apiResponse->formatExceptionMessage($exception), $result->msg);
+        $this->assertEquals('Exception', get_class($result->exception));
+    }
+
     public function test_results_and_success_is_settable()
     {
 		$success  = 0;

@@ -82,10 +82,22 @@ class ApiResponse implements ApiResponseInterface
         return $this;
     }
 
+    public function setExceptionCallback($exceptionCallback)
+    {
+        $this->exceptionCallback = $exceptionCallback;
+
+        return $this;
+    }
+
     public function setException($e, $success = 0)
     {
         $this->response['success'] = $success;
         $this->response['msg'] = $this->formatExceptionMessage($e);
+
+        if ($this->exceptionCallback) {
+            $callback = $this->exceptionCallback;
+            $callback($this->response['msg'], $e);
+        }
 
         return $this;
     }

@@ -25,6 +25,8 @@ interface ApiResponseInterface
 
     public function setResults($value, $total = 0);
 
+    public function setExceptionCallback($exceptionCallback);
+
     public function setException($e, $success = 0);
 
     public function toArray();
