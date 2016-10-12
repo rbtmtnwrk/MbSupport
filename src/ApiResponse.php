@@ -5,6 +5,7 @@ namespace MbSupport;
 class ApiResponse implements ApiResponseInterface
 {
     protected $payloadKey = 'results';
+    protected $exceptionCallback;
 
     protected $response = [
         'success' => 1,

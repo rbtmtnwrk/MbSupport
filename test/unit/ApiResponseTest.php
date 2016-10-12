@@ -49,10 +49,10 @@ class ApiResponseTest extends TestCase
 		$exception = new \Exception($msg);
         // Ok safe now.
 
-        $in = ' in ' . $file . ' on line ' . $line;
+        $expected = '"' . $msg . '" thrown in ' . $file . ' on line ' . $line;
 
         $apiResponse = new \MbSupport\ApiResponse;
-        $this->assertEquals($msg . $in, $apiResponse->formatExceptionMessage($exception));
+        $this->assertEquals($expected, $apiResponse->formatExceptionMessage($exception));
     }
 
     public function test_it_sets_an_exception()
