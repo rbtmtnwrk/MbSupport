@@ -199,11 +199,11 @@ class ApiResponseTest extends TestCase
 
     public function test_it_sets_a_code()
     {
-        $this->apiResponse = new \MbSupport\ApiResponse;
+        $apiResponse = new \MbSupport\ApiResponse;
 
-        $this->apiResponse->setResponseCode(1);
+        $apiResponse->setResponseCode(1);
 
-        $this->assertEquals(1, $this->apiResponse->toArray()['code']);
+        $this->assertEquals(1, $apiResponse->toArray()['code']);
     }
 }
 
