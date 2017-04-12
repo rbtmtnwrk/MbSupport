@@ -11,6 +11,7 @@ class ApiResponse implements ApiResponseInterface
         'success' => 1,
         'msg'     => '',
         'total'   => 0,
+        'code'    => 0,
     ];
 
     /**
@@ -99,6 +100,13 @@ class ApiResponse implements ApiResponseInterface
             $callback = $this->exceptionCallback;
             $callback($this->response['msg'], $e);
         }
+
+        return $this;
+    }
+
+    public function setResponseCode($code)
+    {
+        $this->response['code'] = $code;
 
         return $this;
     }

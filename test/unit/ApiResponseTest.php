@@ -15,6 +15,7 @@ class ApiResponseTest extends TestCase
             'success' => 1,
             'msg'     => '',
             'total'   => 0,
+            'code'    => 0,
             'results' => [],
         ];
 
@@ -30,6 +31,7 @@ class ApiResponseTest extends TestCase
             'success' => 1,
             'msg'     => '',
             'total'   => 0,
+            'code'    => 0,
             'results' => [],
         ];
 
@@ -64,6 +66,7 @@ class ApiResponseTest extends TestCase
             'success' => 0,
             'msg'     => $apiResponse->formatExceptionMessage($exception),
             'total'   => 0,
+            'code'    => 0,
         ];
 
         $this->assertEquals($apiResponse->setException($exception)->toArray(), $expected);
@@ -103,6 +106,7 @@ class ApiResponseTest extends TestCase
             'success' => $success,
             'msg'     => $msg,
             'total'   => $total,
+            'code'    => 0,
             'results' => $results,
         ];
 
@@ -120,6 +124,7 @@ class ApiResponseTest extends TestCase
             'success' => 1,
             'msg'     => $msg,
             'total'   => 0,
+            'code'    => 0,
         ];
     	$apiResponse = new \MbSupport\ApiResponse;
     	$apiResponse->setMsg($msg);
@@ -134,6 +139,7 @@ class ApiResponseTest extends TestCase
             'success' => 1,
             'msg'     => '',
             'total'   => $total,
+            'code'    => 0,
         ];
     	$apiResponse = new \MbSupport\ApiResponse;
     	$apiResponse->setTotal($total);
@@ -147,6 +153,7 @@ class ApiResponseTest extends TestCase
             'success' => 1,
             'msg'     => '',
             'total'   => 1,
+            'code'    => 0,
             'data'    => ['test' => 1]
         ];
         $apiResponse = new \MbSupport\ApiResponse;
@@ -161,6 +168,7 @@ class ApiResponseTest extends TestCase
             'success' => 1,
             'msg'     => '',
             'total'   => 1,
+            'code'    => 0,
             'data'    => ['test' => 1]
         ];
         $apiResponse = new \MbSupport\ApiResponse;
@@ -182,10 +190,20 @@ class ApiResponseTest extends TestCase
             'success' => 1,
             'msg'     => '',
             'total'   => 1,
+            'code'    => 0,
             'results' => $test,
         ];
 
         $this->assertEquals($expected, $apiResponse->toArray());
+    }
+
+    public function test_it_sets_a_code()
+    {
+        $this->apiResponse = new \MbSupport\ApiResponse;
+
+        $this->apiResponse->setResponseCode(1);
+
+        $this->assertEquals(1, $this->apiResponse->toArray()['code']);
     }
 }
 
