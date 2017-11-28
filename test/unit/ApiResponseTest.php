@@ -51,7 +51,7 @@ class ApiResponseTest extends TestCase
 		$exception = new \Exception($msg);
         // Ok safe now.
 
-        $expected = '"' . $msg . '" thrown in ' . $file . ' on line ' . $line;
+        $expected = $msg . ' thrown in ' . $file . ' on line ' . $line;
 
         $apiResponse = new \MbSupport\ApiResponse;
         $this->assertEquals($expected, $apiResponse->formatExceptionMessage($exception));

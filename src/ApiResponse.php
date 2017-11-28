@@ -113,7 +113,7 @@ class ApiResponse implements ApiResponseInterface
 
     public function formatExceptionMessage($e)
     {
-        $msg = '"' . $e->getMessage() . '" thrown in ' . $e->getFile() . ' on line ' . $e->getLine();
+        $msg = $e->getMessage() . ' thrown in ' . $e->getFile() . ' on line ' . $e->getLine();
 
         return $msg;
     }
