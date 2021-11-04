@@ -1,13 +1,8 @@
 <?php
 
-class ApiResponseTest extends TestCase
+class ApiResponseTest extends \Tests\TestCase
 {
     protected $helper;
-
-    public function setUp()
-    {
-        parent::setUp();
-    }
 
     public function test_it_returns_an_array()
     {

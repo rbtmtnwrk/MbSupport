@@ -13,13 +13,8 @@ class Resettable
     use ResettableTrait;
 }
 
-class ResettableTest extends TestCase
+class ResettableTest extends \Tests\TestCase
 {
-    public function setUp()
-    {
-        parent::setUp();
-    }
-
     public function test_it_resets()
     {
         $dummy    = new Resettable;
